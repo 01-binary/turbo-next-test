@@ -23,7 +23,3 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
         working-directory: apps/auto
-        env:
-          CI: true
-          DEPLOY_TARGET: gh-pages
-      - run: touch out/.nojekyll
