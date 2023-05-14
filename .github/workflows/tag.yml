@@ -5,20 +5,14 @@ on:
       - main
 jobs:
   test:
+    if: startsWith(github.event.head_commit.message, 'deploy:finance/v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-ecosystem/action-regex-match@v2
-        id: regex-match
-        with:
-          text: ${{ github.event.head_commit.message }}
-          regex: '^/label\s*(.*?)\s*$'
       - name: 버전 정보 추출
-        if: ${{ steps.regex-match.outputs.match != '' }}
         run: echo "##[set-output name=version;]$(echo '${{ github.event.head_commit.message }}' | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
         id: extract_version_name
       - name: Tag 생성
-        if: ${{ steps.regex-match.outputs.match != '' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
