@@ -13,7 +13,7 @@ jobs:
         id: regex-match
         with:
           text: ${{ github.event.head_commit.message }}
-          regex: 'deploy:finance/v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+          regex: 'deploy:(finance|auto)/v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
       - name: 버전 정보 추출
         if: ${{ steps.regex-match.outputs.match != '' }}
         run: echo "##[set-output name=version;]$(echo '${{ github.event.head_commit.message }}' | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
