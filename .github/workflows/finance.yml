@@ -2,7 +2,9 @@ name: Finance Build
 on:
   push:
     branches:
-      - release/finance/**
+      - main
+    tags:
+      - release-finance-**
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
