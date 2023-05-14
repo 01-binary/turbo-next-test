@@ -1,12 +1,11 @@
 name: Finance Build
 on:
   push:
-    branches:
-      - main
     tags:
       - finance/v*.*.*
 jobs:
   build-and-deploy:
+    if: endsWith(github.ref, 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
