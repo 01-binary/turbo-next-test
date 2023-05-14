@@ -2,10 +2,10 @@ name: Auto Build
 on:
   push:
     branches:
-      - main
+      - release/auto/**
     paths:
-      - "apps/auto/**"
-      - "packages/**"
+      - 'apps/auto/**'
+      - 'packages/**'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

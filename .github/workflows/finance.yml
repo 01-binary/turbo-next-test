@@ -2,10 +2,10 @@ name: Finance Build
 on:
   push:
     branches:
-      - main
+      - release/finance/**
     paths:
-      - "apps/finance/**"
-      - "packages/**"
+      - 'apps/finance/**'
+      - 'packages/**'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
