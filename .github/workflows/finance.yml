@@ -4,7 +4,7 @@ on:
     branches:
       - main
     tags:
-      - release-finance-**
+      - finance/v*.*.*
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
